@@ -1,0 +1,19 @@
+class Solution(object):
+  def longestPalindrome(self, s):
+    l=0
+    if len(s)<1:
+      return s
+    result=s[0]
+    for end in xrange(len(s)):
+      if end-(l+1)>=0 and s[end-(l+1):end+1]==s[end-(l+1):end+1][::-1]:
+        result=s[end-(l+1):end+1]
+        l=l+2
+        continue
+      if end-l>=0 and s[end-l:end+1]==s[end-l:end+1][::-1]:
+        result=s[end-l:end+1]
+        l=l+1
+    return result
+
+p = Solution()
+m = p.longestPalindrome('abacdfgdcaba')
+print(m)
